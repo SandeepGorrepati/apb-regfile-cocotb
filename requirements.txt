@@ -1,0 +1,2 @@
+cocotb>=2.0
+# A simulator is also required (free): Icarus Verilog (`iverilog`) or Verilator.

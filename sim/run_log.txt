@@ -1,0 +1,57 @@
+/tmp/proj/apb_regfile_cocotb/sim/runner.py:12: DeprecationWarning: Simulator.build *verilog_sources* parameter is deprecated. Use the language-agnostic *sources* parameter instead.
+  runner.build(
+     -.--ns INFO     gpi                                ..mbed/gpi_embed.cpp:93   in _embed_init_python              Using Python 3.10.14 interpreter at /usr/bin/python3
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:79   in gpi_print_registered_impl       VPI registered
+     0.00ns INFO     cocotb                             Running on Icarus Verilog version 11.0 (stable)
+     0.00ns WARNING  gpi                                vpi_iterate returned NULL for type vpiInstance for object NULL
+     0.00ns INFO     cocotb                             Seeding Python random module with 1782460847
+     0.00ns INFO     cocotb                             Initialized cocotb v2.0.1 from /sessions/clever-optimistic-cerf/.local/lib/python3.10/site-packages/cocotb
+     0.00ns INFO     cocotb.regression                  pytest not found, install it to enable better AssertionError messages
+     0.00ns INFO     cocotb                             Running tests
+     0.00ns INFO     cocotb.regression                  running test_apb_regfile.test_reset_id_value (1/5)
+                                                            ID register reads its reset value 0xC0DE0001 after reset.
+    85.00ns INFO     cocotb.apb_regfile                 reset ID value OK: 0xc0de0001
+    85.00ns INFO     cocotb.regression                  test_apb_regfile.test_reset_id_value passed
+    85.00ns INFO     cocotb.regression                  running test_apb_regfile.test_directed_write_readback (2/5)
+                                                            Write then read back every RW register; values must match the model.
+   560.00ns INFO     cocotb.apb_regfile                 ==== FUNCTIONAL COVERAGE: 5/7 bins (71%) ====
+   560.00ns INFO     cocotb.apb_regfile                   [x] all 8 regs written
+   560.00ns INFO     cocotb.apb_regfile                   [x] all 8 regs read
+   560.00ns INFO     cocotb.apb_regfile                   [x] clean write (OKAY)
+   560.00ns INFO     cocotb.apb_regfile                   [x] clean read (OKAY)
+   560.00ns INFO     cocotb.apb_regfile                   [ ] decode-error PSLVERR
+   560.00ns INFO     cocotb.apb_regfile                   [ ] read-only-write PSLVERR
+   560.00ns INFO     cocotb.apb_regfile                   [x] read-after-write check
+   560.00ns INFO     cocotb.regression                  test_apb_regfile.test_directed_write_readback passed
+   560.00ns INFO     cocotb.regression                  running test_apb_regfile.test_readonly_error (3/5)
+                                                            Writing the ID (read-only) register asserts PSLVERR and does not change it.
+   675.00ns INFO     cocotb.apb_regfile                 read-only error path OK
+   675.00ns INFO     cocotb.regression                  test_apb_regfile.test_readonly_error passed
+   675.00ns INFO     cocotb.regression                  running test_apb_regfile.test_decode_error (4/5)
+                                                            Out-of-range address asserts PSLVERR on both read and write.
+   790.00ns INFO     cocotb.apb_regfile                 decode error path OK
+   790.00ns INFO     cocotb.regression                  test_apb_regfile.test_decode_error passed
+   790.00ns INFO     cocotb.regression                  running test_apb_regfile.test_constrained_random (5/5)
+                                                            Self-checking constrained-random regression with coverage closure.
+ 10355.00ns INFO     cocotb.apb_regfile                 ==== FUNCTIONAL COVERAGE: 7/7 bins (100%) ====
+ 10355.00ns INFO     cocotb.apb_regfile                   [x] all 8 regs written
+ 10355.00ns INFO     cocotb.apb_regfile                   [x] all 8 regs read
+ 10355.00ns INFO     cocotb.apb_regfile                   [x] clean write (OKAY)
+ 10355.00ns INFO     cocotb.apb_regfile                   [x] clean read (OKAY)
+ 10355.00ns INFO     cocotb.apb_regfile                   [x] decode-error PSLVERR
+ 10355.00ns INFO     cocotb.apb_regfile                   [x] read-only-write PSLVERR
+ 10355.00ns INFO     cocotb.apb_regfile                   [x] read-after-write check
+ 10355.00ns INFO     cocotb.apb_regfile                 RANDOM regression: 300 transactions self-checked, 0 mismatches
+ 10355.00ns INFO     cocotb.regression                  test_apb_regfile.test_constrained_random passed
+ 10355.00ns INFO     cocotb.regression                  *******************************************************************************************************
+                                                        ** TEST                                           STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        *******************************************************************************************************
+                                                        ** test_apb_regfile.test_reset_id_value            PASS          85.00           0.00      30346.94  **
+                                                        ** test_apb_regfile.test_directed_write_readback   PASS         475.00           0.01      45275.30  **
+                                                        ** test_apb_regfile.test_readonly_error            PASS         115.00           0.00      58522.81  **
+                                                        ** test_apb_regfile.test_decode_error              PASS         115.00           0.00      54774.58  **
+                                                        ** test_apb_regfile.test_constrained_random        PASS        9565.00           0.19      51051.37  **
+                                                        *******************************************************************************************************
+                                                        ** TESTS=5 PASS=5 FAIL=0 SKIP=0                               10355.00           0.22      47633.19  **
+                                                        *******************************************************************************************************
+FST info: dumpfile /tmp/proj/apb_regfile_cocotb/sim/sim_build/apb_regfile.fst opened for output.
