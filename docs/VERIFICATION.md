@@ -13,5 +13,19 @@ Validation consists of ten Python checker unit tests, including data/status
 negative controls, and six cocotb tests against the unchanged register-file RTL.
 The default random run performs 300 random plus 18 checked closing transactions.
 
-Validation status: pending the correction branch's GitHub Actions run.
-The exact successful run and commit will be recorded after execution.
+## Executed evidence
+
+[Passing workflow 40496957607](https://github.com/SandeepGorrepati/apb-regfile-cocotb/actions/runs/40496957607)
+executed correction commit `7d16790eaa24d1b35ceefbaecb776cd3454d674e` on 27 October 2026.
+
+- Ten checker unit tests passed, including intentionally wrong data/status.
+- Six cocotb tests passed against the unchanged RTL: TESTS=6 PASS=6 FAIL=0 SKIP=0.
+- The actual-DUT coverage-gate test confirmed that reads before writes and reads
+  of unrelated registers do not earn read-after-write credit.
+- Random regression: 300 random + 18 closing = 318 checked transactions, zero mismatches.
+- All seven explicitly defined bins hit. The directed write/read test alone
+  reports 5/7, correctly leaving the error-path bins uncredited.
+
+The source/test correction was validated before promotion to main. This evidence
+page records that run; later documentation commits do not introduce new functional
+results. See current Actions for subsequent executions and exact tested commits.
