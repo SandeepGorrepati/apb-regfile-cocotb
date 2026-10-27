@@ -38,6 +38,19 @@ A healthy baseline must pass; each mutant must fail an expected checker and have
 complete simulation-result XML. Five result-gate unit tests reject escaped mutants,
 missing simulation results and unrelated tool failures.
 
-Execution evidence for these additional mutation controls will be recorded after
-the validation branch completes. The earlier ten-unit/six-RTL results above remain
+[Passing actual-RTL mutation workflow 40537957149](https://github.com/SandeepGorrepati/apb-regfile-cocotb/actions/runs/40537957149)
+executed commit `a5ed2efbb1b6593a960f649cfaab01c7ea8fc11e`.
+
+| Case | Observed outcome |
+|---|---|
+| Healthy RTL | 6 tests passed, zero failures |
+| Corrupt written data | Detected: 3 failed tests with expected read-data checker failures |
+| Suppress PSLVERR | Detected: 3 failed tests with expected write-status checker failures |
+| Corrupt reset ID | Detected: 4 failed tests with expected read-data checker failures |
+
+All 3 mutants were detected. Five mutation-result gate unit tests also passed.
+Each failed mutant is expected negative evidence inside a successful validation
+workflow, not a failing production design. The unchanged RTL was verified by the
+script after execution. These three faults are sampled robustness checks, not
+exhaustive mutation coverage. The earlier ten-unit/six-RTL results above remain
 the evidence for the original coverage correction.
