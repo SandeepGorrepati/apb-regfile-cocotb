@@ -29,3 +29,15 @@ executed correction commit `7d16790eaa24d1b35ceefbaecb776cd3454d674e` on 27 Octo
 The source/test correction was validated before promotion to main. This evidence
 page records that run; later documentation commits do not introduce new functional
 results. See current Actions for subsequent executions and exact tested commits.
+
+## Actual-RTL mutation controls
+
+The follow-up checks compile separate temporary copies with corrupted write data,
+suppressed PSLVERR, and a corrupted reset ID. The production RTL file is untouched.
+A healthy baseline must pass; each mutant must fail an expected checker and have
+complete simulation-result XML. Five result-gate unit tests reject escaped mutants,
+missing simulation results and unrelated tool failures.
+
+Execution evidence for these additional mutation controls will be recorded after
+the validation branch completes. The earlier ten-unit/six-RTL results above remain
+the evidence for the original coverage correction.

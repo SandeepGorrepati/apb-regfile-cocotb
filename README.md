@@ -28,6 +28,12 @@ Ten simulator-independent unit tests include deliberately corrupted read data
 and incorrect read/write error status, including deterministic coverage-closing
 transactions and the ID read. These negative controls must raise checker failures.
 
+CI also compiles temporary copies with three actual RTL defects: corrupted write
+data, suppressed PSLVERR and a corrupted reset ID. The healthy baseline must pass;
+each mutant must execute the test suite, fail an expected data/status check and
+produce test-result XML. Compilation errors, missing tests and unrelated failures
+do not count as detected faults. Production RTL remains unchanged.
+
 The cocotb suite separately exercises the coverage gate through actual RTL
 transactions. All random and directed accesses use the same checked bus wrapper;
 coverage is not closed by directly setting bins.
@@ -40,9 +46,10 @@ Install Python, Icarus Verilog and the Python requirements:
 pip install -r requirements.txt
 python -m unittest discover -s tb -p 'test_apb_checks.py' -v
 python sim/runner.py
+python sim/check_mutations.py
 ```
 
-The existing CI workflow runs both commands on each push and pull request.
+The CI workflow runs checker tests, RTL regression and mutation controls on each push and pull request.
 Use the workflow for the exact commit being reviewed. The historical
 `sim/run_log.txt` predates the coverage correction and is not current evidence.
 Results for the correction are linked in [verification evidence](docs/VERIFICATION.md).
